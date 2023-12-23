@@ -46,31 +46,39 @@
             // 
             // RegisterUsernameBox
             // 
-            this.RegisterUsernameBox.Location = new System.Drawing.Point(232, 120);
+            this.RegisterUsernameBox.Location = new System.Drawing.Point(174, 98);
+            this.RegisterUsernameBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RegisterUsernameBox.Name = "RegisterUsernameBox";
-            this.RegisterUsernameBox.Size = new System.Drawing.Size(150, 22);
+            this.RegisterUsernameBox.Size = new System.Drawing.Size(114, 20);
             this.RegisterUsernameBox.TabIndex = 0;
             // 
             // PasswordBox1
             // 
-            this.PasswordBox1.Location = new System.Drawing.Point(232, 181);
+            this.PasswordBox1.Location = new System.Drawing.Point(174, 147);
+            this.PasswordBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PasswordBox1.MaxLength = 30;
             this.PasswordBox1.Name = "PasswordBox1";
-            this.PasswordBox1.Size = new System.Drawing.Size(150, 22);
+            this.PasswordBox1.PasswordChar = '*';
+            this.PasswordBox1.Size = new System.Drawing.Size(114, 20);
             this.PasswordBox1.TabIndex = 1;
             // 
             // PasswordBox2
             // 
-            this.PasswordBox2.Location = new System.Drawing.Point(232, 246);
+            this.PasswordBox2.Location = new System.Drawing.Point(174, 200);
+            this.PasswordBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PasswordBox2.MaxLength = 30;
             this.PasswordBox2.Name = "PasswordBox2";
-            this.PasswordBox2.Size = new System.Drawing.Size(150, 22);
+            this.PasswordBox2.PasswordChar = '*';
+            this.PasswordBox2.Size = new System.Drawing.Size(114, 20);
             this.PasswordBox2.TabIndex = 2;
             // 
             // RegisterButton
             // 
             this.RegisterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RegisterButton.Location = new System.Drawing.Point(368, 278);
+            this.RegisterButton.Location = new System.Drawing.Point(276, 226);
+            this.RegisterButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RegisterButton.Name = "RegisterButton";
-            this.RegisterButton.Size = new System.Drawing.Size(88, 28);
+            this.RegisterButton.Size = new System.Drawing.Size(66, 23);
             this.RegisterButton.TabIndex = 6;
             this.RegisterButton.Text = "Register";
             this.RegisterButton.UseVisualStyleBackColor = true;
@@ -79,36 +87,40 @@
             // RegisterUsernameLabel
             // 
             this.RegisterUsernameLabel.AutoSize = true;
-            this.RegisterUsernameLabel.Location = new System.Drawing.Point(229, 101);
+            this.RegisterUsernameLabel.Location = new System.Drawing.Point(172, 82);
+            this.RegisterUsernameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.RegisterUsernameLabel.Name = "RegisterUsernameLabel";
-            this.RegisterUsernameLabel.Size = new System.Drawing.Size(70, 16);
+            this.RegisterUsernameLabel.Size = new System.Drawing.Size(55, 13);
             this.RegisterUsernameLabel.TabIndex = 4;
             this.RegisterUsernameLabel.Text = "Username";
             // 
             // NewPasswordLabel
             // 
             this.NewPasswordLabel.AutoSize = true;
-            this.NewPasswordLabel.Location = new System.Drawing.Point(229, 162);
+            this.NewPasswordLabel.Location = new System.Drawing.Point(172, 132);
+            this.NewPasswordLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.NewPasswordLabel.Name = "NewPasswordLabel";
-            this.NewPasswordLabel.Size = new System.Drawing.Size(97, 16);
+            this.NewPasswordLabel.Size = new System.Drawing.Size(78, 13);
             this.NewPasswordLabel.TabIndex = 5;
             this.NewPasswordLabel.Text = "New Password";
             // 
             // RepeatPasswordLabel
             // 
             this.RepeatPasswordLabel.AutoSize = true;
-            this.RepeatPasswordLabel.Location = new System.Drawing.Point(229, 227);
+            this.RepeatPasswordLabel.Location = new System.Drawing.Point(172, 184);
+            this.RepeatPasswordLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.RepeatPasswordLabel.Name = "RepeatPasswordLabel";
-            this.RepeatPasswordLabel.Size = new System.Drawing.Size(115, 16);
+            this.RepeatPasswordLabel.Size = new System.Drawing.Size(91, 13);
             this.RepeatPasswordLabel.TabIndex = 6;
             this.RepeatPasswordLabel.Text = "Repeat Password";
             // 
             // LoginLink
             // 
             this.LoginLink.AutoSize = true;
-            this.LoginLink.Location = new System.Drawing.Point(355, 310);
+            this.LoginLink.Location = new System.Drawing.Point(266, 252);
+            this.LoginLink.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LoginLink.Name = "LoginLink";
-            this.LoginLink.Size = new System.Drawing.Size(125, 16);
+            this.LoginLink.Size = new System.Drawing.Size(97, 13);
             this.LoginLink.TabIndex = 7;
             this.LoginLink.TabStop = true;
             this.LoginLink.Text = "Already a member?";
@@ -117,57 +129,63 @@
             // OrganizationDropBox
             // 
             this.OrganizationDropBox.FormattingEnabled = true;
-            this.OrganizationDropBox.Location = new System.Drawing.Point(432, 118);
+            this.OrganizationDropBox.Location = new System.Drawing.Point(324, 96);
+            this.OrganizationDropBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.OrganizationDropBox.Name = "OrganizationDropBox";
-            this.OrganizationDropBox.Size = new System.Drawing.Size(150, 24);
+            this.OrganizationDropBox.Size = new System.Drawing.Size(114, 21);
             this.OrganizationDropBox.TabIndex = 3;
             // 
             // OrganizationLabel
             // 
             this.OrganizationLabel.AutoSize = true;
-            this.OrganizationLabel.Location = new System.Drawing.Point(429, 99);
+            this.OrganizationLabel.Location = new System.Drawing.Point(322, 80);
+            this.OrganizationLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.OrganizationLabel.Name = "OrganizationLabel";
-            this.OrganizationLabel.Size = new System.Drawing.Size(82, 16);
+            this.OrganizationLabel.Size = new System.Drawing.Size(66, 13);
             this.OrganizationLabel.TabIndex = 9;
             this.OrganizationLabel.Text = "Organization";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(429, 162);
+            this.label1.Location = new System.Drawing.Point(322, 132);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 16);
+            this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 11;
             this.label1.Text = "Email";
             // 
             // EmailBox
             // 
-            this.EmailBox.Location = new System.Drawing.Point(432, 181);
+            this.EmailBox.Location = new System.Drawing.Point(324, 147);
+            this.EmailBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.EmailBox.Name = "EmailBox";
-            this.EmailBox.Size = new System.Drawing.Size(150, 22);
+            this.EmailBox.Size = new System.Drawing.Size(114, 20);
             this.EmailBox.TabIndex = 4;
             // 
             // RepeatEmailLabel
             // 
             this.RepeatEmailLabel.AutoSize = true;
-            this.RepeatEmailLabel.Location = new System.Drawing.Point(429, 227);
+            this.RepeatEmailLabel.Location = new System.Drawing.Point(322, 184);
+            this.RepeatEmailLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.RepeatEmailLabel.Name = "RepeatEmailLabel";
-            this.RepeatEmailLabel.Size = new System.Drawing.Size(89, 16);
+            this.RepeatEmailLabel.Size = new System.Drawing.Size(70, 13);
             this.RepeatEmailLabel.TabIndex = 13;
             this.RepeatEmailLabel.Text = "Repeat Email";
             // 
             // RepeatEmailBox
             // 
-            this.RepeatEmailBox.Location = new System.Drawing.Point(432, 246);
+            this.RepeatEmailBox.Location = new System.Drawing.Point(324, 200);
+            this.RepeatEmailBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RepeatEmailBox.Name = "RepeatEmailBox";
-            this.RepeatEmailBox.Size = new System.Drawing.Size(150, 22);
+            this.RepeatEmailBox.Size = new System.Drawing.Size(114, 20);
             this.RepeatEmailBox.TabIndex = 5;
             // 
             // Register
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.RepeatEmailLabel);
             this.Controls.Add(this.RepeatEmailBox);
             this.Controls.Add(this.label1);
@@ -182,6 +200,7 @@
             this.Controls.Add(this.PasswordBox2);
             this.Controls.Add(this.PasswordBox1);
             this.Controls.Add(this.RegisterUsernameBox);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Register";
             this.Text = "Register";
             this.Load += new System.EventHandler(this.Register_Load);

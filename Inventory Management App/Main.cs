@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,20 +15,8 @@ namespace Inventory_Management_App
         private int userId;
         public Main(int userId)
         {
-
             this.userId = userId;
             InitializeComponent();
-        }
-
-        private void Main_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            CreateOrganization co = new CreateOrganization(userId);
-            co.ShowDialog();
         }
     }
 }

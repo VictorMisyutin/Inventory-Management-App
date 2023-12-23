@@ -89,7 +89,6 @@
             this.Controls.Add(this.OrgoNameBox);
             this.Name = "CreateOrganization";
             this.Text = "CreateOrganization";
-            this.Load += new System.EventHandler(this.CreateOrganization_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

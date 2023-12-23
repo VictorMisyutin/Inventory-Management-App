@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -7,8 +8,7 @@ namespace Inventory_Management_App
 
     public partial class Register : Form
     {
-        private SqlConnection cn;
-
+        private SqlDataReader dr;
         public Register()
         {
             InitializeComponent();
@@ -23,8 +23,11 @@ namespace Inventory_Management_App
 
         private void Register_Load(object sender, EventArgs e)
         {
-            cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\misyu\Desktop\Coding\Inventory Management App\Inventory Management App\Database.mdf"";Integrated Security=True");
-            cn.Open();
+            List<string> names = Scripts.GetAllOrganizationNames();
+            foreach(string name in names)
+            {
+                OrganizationDropBox.Items.Add(name);
+            }
         }
 
         private void RegisterButton_Click(object sender, EventArgs e)
@@ -33,24 +36,22 @@ namespace Inventory_Management_App
             {
                 if (PasswordBox1.Text == PasswordBox2.Text)
                 {
-                    SqlCommand cmd = new SqlCommand("select * from Users where username='" + RegisterUsernameBox.Text + "'", cn);
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    if (dr.Read())
+                    if (EmailBox.Text != RepeatEmailBox.Text)
+                    {
+                        MessageBox.Show("Emails do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    List<string> user = Scripts.GetUserByUserName(RegisterUsernameBox.Text);
+                    if (user.Count > 0)
                     {
                         dr.Close();
                         MessageBox.Show("Username already exist please try another ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
-                        dr.Close();
-                        cmd.Dispose();
-                        cmd = new SqlCommand("insert into Users values(@username,@password,@email,@organization)", cn);
-                        cmd.Parameters.AddWithValue("username", RegisterUsernameBox.Text);
-                        cmd.Parameters.AddWithValue("password", PasswordBox1.Text);
-                        cmd.Parameters.AddWithValue("email", EmailBox.Text);
-                        cmd.Parameters.AddWithValue("organization", OrganizationDropBox.SelectedItem == null ? "" : OrganizationDropBox.SelectedItem);
-
-                        cmd.ExecuteNonQuery();
+                        List<string> organization = Scripts.GetOrganizationByName(OrganizationDropBox.SelectedItem.ToString());
+                        int orgoId = Int32.Parse(organization[0]);
+                        Scripts.CreateNewUser(RegisterUsernameBox.Text, PasswordBox1.Text, EmailBox.Text, orgoId);
                         MessageBox.Show("Account created.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Hide();
                         Login login = new Login();
