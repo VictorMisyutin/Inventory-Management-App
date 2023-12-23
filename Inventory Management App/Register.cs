@@ -23,7 +23,7 @@ namespace Inventory_Management_App
 
         private void Register_Load(object sender, EventArgs e)
         {
-            cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\misyu\source\repos\Inventory Management App\Inventory Management App\Database.mdf"";Integrated Security=True");
+            cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\misyu\Desktop\Coding\Inventory Management App\Inventory Management App\Database.mdf"";Integrated Security=True");
             cn.Open();
         }
 
@@ -48,7 +48,7 @@ namespace Inventory_Management_App
                         cmd.Parameters.AddWithValue("username", RegisterUsernameBox.Text);
                         cmd.Parameters.AddWithValue("password", PasswordBox1.Text);
                         cmd.Parameters.AddWithValue("email", EmailBox.Text);
-                        cmd.Parameters.AddWithValue("organization", OrganizationDropBox.SelectedItem);
+                        cmd.Parameters.AddWithValue("organization", OrganizationDropBox.SelectedItem == null ? "" : OrganizationDropBox.SelectedItem);
 
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Account created.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);

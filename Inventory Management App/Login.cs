@@ -28,7 +28,7 @@ namespace Inventory_Management_App
 
         private void Login_Load(object sender, EventArgs e)
         {
-            cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\misyu\source\repos\Inventory Management App\Inventory Management App\Database.mdf"";Integrated Security=True");
+            cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\misyu\Desktop\Coding\Inventory Management App\Inventory Management App\Database.mdf"";Integrated Security=True");
             cn.Open();
         }
 
@@ -41,9 +41,9 @@ namespace Inventory_Management_App
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
+                    Main main= new Main((int)dr.GetValue(0));
                     dr.Close();
                     this.Hide();
-                    Main main= new Main(0);
                     main.ShowDialog();
                 }
                 else
