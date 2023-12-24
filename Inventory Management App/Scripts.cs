@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Inventory_Management_App
 {
@@ -26,20 +20,16 @@ namespace Inventory_Management_App
         {
             try
             {
-                cmd = new SqlCommand("insert into Organizations (name, location, ownerId) values(@name,@location,@ownerId)", cn);
-                cmd.Parameters.AddWithValue("name", name);
-                cmd.Parameters.AddWithValue("location", location == string.Empty ? "" : location);
-                cmd.Parameters.AddWithValue("ownerId", userId);
+                cmd = new SqlCommand("insert into Organizations (name, location, ownerId, dateCreated, lastModified) values(@name,@location,@ownerId, getDate(), getDate())", cn);
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@location", location == string.Empty ? "" : location);
+                cmd.Parameters.AddWithValue("@ownerId", userId);
 
                 cmd.ExecuteNonQuery();
                 return true;
             }
             catch {
                 return false;
-            }
-            finally
-            {
-                dr.Close();
             }
 
         }
@@ -72,11 +62,14 @@ namespace Inventory_Management_App
             try
             {
                 cmd = new SqlCommand("select * from Users where username=@username", cn);
-                cmd.Parameters.AddWithValue("username", userName);
+                cmd.Parameters.AddWithValue("@username", userName);
                 dr = cmd.ExecuteReader();
-                foreach(string item in dr)
+                while (dr.Read())
                 {
-                    result.Add(item);
+                    for(int i = 0; i < dr.FieldCount; i++)
+                    {
+                        result.Add(dr[i].ToString());
+                    }
                 }
                 return result;
             }
@@ -88,16 +81,46 @@ namespace Inventory_Management_App
                 dr.Close();
             }
         }
-    
-        public static bool CreateNewUser(string username, string password, string email, int orgoId)
+
+        public static List<string> GetUserById(int userId)
+        {
+            List<string> result = new List<string>();
+            try
+            {
+                cmd = new SqlCommand("select * from Users where Id=@userId", cn);
+                cmd.Parameters.AddWithValue("@userId", userId);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    for (int i = 0; i < dr.FieldCount; i++)
+                    {
+                        result.Add(dr[i].ToString());
+                    }
+                }
+                return result;
+            }
+            catch
+            {
+                return result;
+            }
+            finally
+            {
+                dr.Close();
+            }
+        }
+
+        public static bool CreateNewUser(string username, string password, string email, string firstName, string lastName,int orgoId)
         {
             try
             {
-                cmd = new SqlCommand("insert into Users values(@username,@password,@email,@organization)", cn);
-                cmd.Parameters.AddWithValue("username", username);
-                cmd.Parameters.AddWithValue("password", password);
-                cmd.Parameters.AddWithValue("email", email);
-                cmd.Parameters.AddWithValue("organization", orgoId);
+                cmd = new SqlCommand("insert into Users (username, password, email, firstName, lastName, organizationId, dateCreated, lastModified)" 
+                    + " values(@username,@password,@email, @firstName, @lastName, @organizationId, getDate(), getDate())", cn);
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@password", password);
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@firstName", firstName);
+                cmd.Parameters.AddWithValue("@lastName", lastName);
+                cmd.Parameters.AddWithValue("@organizationId", orgoId);
 
                 cmd.ExecuteNonQuery();
                 return true;
@@ -112,12 +135,8 @@ namespace Inventory_Management_App
         {
             List<string> result = new List<string>();
             try{
-                /*cmd = new SqlCommand("declare @name NVARCHAR(50) = '" + name + "'\n" + 
-                    " select * from Organizations where [name] = @name",cn);*/
-                /*cmd = new SqlCommand(@"declare @name NVARCHAR(50) = 'Victors Orgo'
-                    select * from Organizations where [name] = @name",cn);*/
-                cmd = new SqlCommand("select * from Organizations where [name] = name",cn);
-                cmd.Parameters.AddWithValue("name", name);
+                cmd = new SqlCommand("select * from Organizations where [name] = @name",cn);
+                cmd.Parameters.AddWithValue("@name", name);
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
@@ -136,7 +155,34 @@ namespace Inventory_Management_App
                 dr.Close();
             }
         }
-    
-    
+
+        public static List<string> GetOrganizationById(int orgoId)
+        {
+            List<string> result = new List<string>();
+            try
+            {
+                cmd = new SqlCommand("select * from Organizations where [Id] = @orgoId", cn);
+                cmd.Parameters.AddWithValue("@orgoId", orgoId);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    for (int i = 0; i < dr.FieldCount; i++)
+                    {
+                        result.Add(dr.GetValue(i).ToString());
+                    }
+                }
+                return result;
+            }
+            catch
+            {
+                return result;
+            }
+            finally
+            {
+                dr.Close();
+            }
+        }
+
+
     }
 }
