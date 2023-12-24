@@ -109,7 +109,7 @@ namespace Inventory_Management_App
             }
         }
 
-        public static bool CreateNewUser(string username, string password, string email, string firstName, string lastName,int orgoId)
+        public static bool CreateNewUser(string username, string password, string email, string firstName, string lastName,int orgaId)
         {
             try
             {
@@ -120,7 +120,7 @@ namespace Inventory_Management_App
                 cmd.Parameters.AddWithValue("@email", email);
                 cmd.Parameters.AddWithValue("@firstName", firstName);
                 cmd.Parameters.AddWithValue("@lastName", lastName);
-                cmd.Parameters.AddWithValue("@organizationId", orgoId);
+                cmd.Parameters.AddWithValue("@organizationId", orgaId);
 
                 cmd.ExecuteNonQuery();
                 return true;
@@ -156,13 +156,13 @@ namespace Inventory_Management_App
             }
         }
 
-        public static List<string> GetOrganizationById(int orgoId)
+        public static List<string> GetOrganizationById(int orgaId)
         {
             List<string> result = new List<string>();
             try
             {
-                cmd = new SqlCommand("select * from Organizations where [Id] = @orgoId", cn);
-                cmd.Parameters.AddWithValue("@orgoId", orgoId);
+                cmd = new SqlCommand("select * from Organizations where [Id] = @orgaId", cn);
+                cmd.Parameters.AddWithValue("@orgaId", orgaId);
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
@@ -182,7 +182,6 @@ namespace Inventory_Management_App
                 dr.Close();
             }
         }
-
 
     }
 }

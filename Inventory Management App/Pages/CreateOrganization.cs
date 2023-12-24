@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Inventory_Management_App
@@ -14,12 +15,19 @@ namespace Inventory_Management_App
 
         private void CreateOrganizationButton_Click(object sender, EventArgs e)
         {
-            if (OrgoNameBox.Text != string.Empty)
+            if (OrgaNameBox.Text != string.Empty)
             {
-                // put here
-                Scripts.CreateNewOrganization(OrgoNameBox.Text, LocationBox.Text, userId);
-                MessageBox.Show("Organization created.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Hide();
+                List<string> orga = Scripts.GetOrganizationByName(OrgaNameBox.Text);
+                if (orga.Count > 0)
+                {
+                    MessageBox.Show("Organization already exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    Scripts.CreateNewOrganization(OrgaNameBox.Text, LocationBox.Text, userId);
+                    MessageBox.Show("Organization created.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Hide();
+                }
             }
             else
             {

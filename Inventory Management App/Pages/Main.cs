@@ -23,8 +23,9 @@ namespace Inventory_Management_App
         {
             List<string> user = Scripts.GetUserById(userId);
             NameLabel.Text = user[4] + " " + user[5];
-            List<string> orgo = Scripts.GetOrganizationById(Int32.Parse(user[6]));
-            OrganizationLabel.Text = orgo[1];
+            List<string> orga = Scripts.GetOrganizationById(Int32.Parse(user[6]));
+            OrganizationLabel.Text = orga[1];
         }
+
     }
 }

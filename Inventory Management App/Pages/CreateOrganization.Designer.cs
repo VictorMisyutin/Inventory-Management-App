@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.OrgoNameBox = new System.Windows.Forms.TextBox();
+            this.OrgaNameBox = new System.Windows.Forms.TextBox();
             this.LocationBox = new System.Windows.Forms.TextBox();
             this.CreateOrganizationButton = new System.Windows.Forms.Button();
             this.OrganizationNameLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // OrgoNameBox
+            // OrgaNameBox
             // 
-            this.OrgoNameBox.Location = new System.Drawing.Point(355, 159);
-            this.OrgoNameBox.Name = "OrgoNameBox";
-            this.OrgoNameBox.Size = new System.Drawing.Size(119, 20);
-            this.OrgoNameBox.TabIndex = 0;
+            this.OrgaNameBox.Location = new System.Drawing.Point(355, 159);
+            this.OrgaNameBox.Name = "OrgaNameBox";
+            this.OrgaNameBox.Size = new System.Drawing.Size(119, 20);
+            this.OrgaNameBox.TabIndex = 0;
             // 
             // LocationBox
             // 
@@ -86,7 +86,7 @@
             this.Controls.Add(this.OrganizationNameLabel);
             this.Controls.Add(this.CreateOrganizationButton);
             this.Controls.Add(this.LocationBox);
-            this.Controls.Add(this.OrgoNameBox);
+            this.Controls.Add(this.OrgaNameBox);
             this.Name = "CreateOrganization";
             this.Text = "CreateOrganization";
             this.ResumeLayout(false);
@@ -96,7 +96,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox OrgoNameBox;
+        private System.Windows.Forms.TextBox OrgaNameBox;
         private System.Windows.Forms.TextBox LocationBox;
         private System.Windows.Forms.Button CreateOrganizationButton;
         private System.Windows.Forms.Label OrganizationNameLabel;

@@ -8,7 +8,6 @@ namespace Inventory_Management_App
 
     public partial class Register : Form
     {
-        private SqlDataReader dr;
         public Register()
         {
             InitializeComponent();
@@ -49,14 +48,13 @@ namespace Inventory_Management_App
                     List<string> user = Scripts.GetUserByUserName(RegisterUsernameBox.Text);
                     if (user.Count > 0)
                     {
-                        dr.Close();
-                        MessageBox.Show("Username already exist please try another ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Username already exist please try another.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
                         List<string> organization = Scripts.GetOrganizationByName(OrganizationDropBox.SelectedItem.ToString());
-                        int orgoId = Int32.Parse(organization[0]);
-                        Scripts.CreateNewUser(RegisterUsernameBox.Text, PasswordBox1.Text, EmailBox.Text, FirstNameBox.Text, LastNameBox.Text, orgoId);
+                        int orgaId = Int32.Parse(organization[0]);
+                        Scripts.CreateNewUser(RegisterUsernameBox.Text, PasswordBox1.Text, EmailBox.Text, FirstNameBox.Text, LastNameBox.Text, orgaId);
                         MessageBox.Show("Account created.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Hide();
                         Login login = new Login();
