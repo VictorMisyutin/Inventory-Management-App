@@ -12,7 +12,10 @@ namespace Inventory_Management_App
 
         static Scripts()
         {
-            cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\misyu\Desktop\Coding\Inventory Management App\Inventory Management App\Database.mdf"";Integrated Security=True");
+            // for my computer
+            //cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\misyu\Desktop\Coding\Inventory Management App\Inventory Management App\Database.mdf"";Integrated Security=True");
+            // for my laptop
+            cn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\misyu\\source\\repos\\Inventory Management App\\Inventory Management App\\Database.mdf\";Integrated Security=True");
             cn.Open(); 
         }
 
@@ -89,6 +92,34 @@ namespace Inventory_Management_App
             {
                 cmd = new SqlCommand("select * from Users where Id=@userId", cn);
                 cmd.Parameters.AddWithValue("@userId", userId);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    for (int i = 0; i < dr.FieldCount; i++)
+                    {
+                        result.Add(dr[i].ToString());
+                    }
+                }
+                return result;
+            }
+            catch
+            {
+                return result;
+            }
+            finally
+            {
+                dr.Close();
+            }
+        }
+
+        public static List<string> GetUserByUsernameAndPassword(string username, string password)
+        {
+            List<string> result = new List<string>();
+            try
+            {
+                cmd = new SqlCommand("select * from Users where username=@username and password=@password", cn);
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@password", password);
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {

@@ -13,7 +13,6 @@ namespace Inventory_Management_App
 {
     public partial class Login : Form
     {
-        private SqlConnection cn;
         public Login()
         {
             InitializeComponent();
@@ -28,9 +27,6 @@ namespace Inventory_Management_App
 
         private void Login_Load(object sender, EventArgs e)
         {
-            //cn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DataBaseConnectionString"].ConnectionString);
-            cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\misyu\Desktop\Coding\Inventory Management App\Inventory Management App\Database.mdf"";Integrated Security=True");
-            cn.Open();
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
@@ -38,12 +34,11 @@ namespace Inventory_Management_App
             if(PasswordBox.Text != string.Empty || UsernameBox.Text != string.Empty)
             {
 
-                SqlCommand cmd = new SqlCommand("select * from Users where username='" + UsernameBox.Text + "' and password='" + PasswordBox.Text + "'", cn);
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.Read())
+                List<string> user = Scripts.GetUserByUsernameAndPassword(UsernameBox.Text, PasswordBox.Text);
+
+                if (user.Count > 0)
                 {
-                    int logUserId = (int)dr["Id"];
-                    dr.Close();
+                    int logUserId = Int32.Parse(user[0]);
                     this.Hide();
                     if (logUserId == 1)
                     {
@@ -58,7 +53,6 @@ namespace Inventory_Management_App
                 }
                 else
                 {
-                    dr.Close();
                     MessageBox.Show("No account with those credentials", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
