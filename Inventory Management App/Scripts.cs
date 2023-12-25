@@ -13,9 +13,12 @@ namespace Inventory_Management_App
         static Scripts()
         {
             // for my computer
-            //cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\misyu\Desktop\Coding\Inventory Management App\Inventory Management App\Database.mdf"";Integrated Security=True");
+            cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\misyu\Desktop\Coding\Inventory Management App\Inventory Management App\Database.mdf"";Integrated Security=True");
             // for my laptop
-            cn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\misyu\\source\\repos\\Inventory Management App\\Inventory Management App\\Database.mdf\";Integrated Security=True");
+            //cn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\misyu\\source\\repos\\Inventory Management App\\Inventory Management App\\Database.mdf\";Integrated Security=True");
+            // using MS SQL
+            //cn = new SqlConnection("Server=DC1;Database=InventoryManagement;Trusted_Connection=True");
+
             cn.Open(); 
         }
 
